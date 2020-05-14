@@ -1,8 +1,9 @@
-# rossanodan
+# Welcome to rossanodan 👋
+[![Twitter: rossanodan](https://img.shields.io/twitter/follow/rossanodan.svg?style=social)](https://twitter.com/rossanodan)
 
-## What is this repository about?
+> This repository contains my personal blog I built using [Hugo](https://gohugo.io/).
 
-This repository contains my personal blog I built using [Hugo](https://gohugo.io/).
+### 🏠 [Homepage](https://rossanodan.me/)
 
 ## Development notes
 
@@ -39,9 +40,11 @@ Setting up custom domains on Firebase is really easy and I also learnt a trick -
 
 I thought it was also fair to setup a CI workflow on GitHub Actions! Visit https://github.com/rossanodan/rossanodan/actions to see my workflow in action. Here's the `yml` file https://github.com/rossanodan/rossanodan/blob/master/.github/workflows/ci.yml.
 
----
-### Author: Rossano D'Angelo
+## Author
 
-### Twitter [@rossanodan](https://twitter.com/rossanodan)
+👤 **Rossano D'Angelo**
 
-### LinkedIn [/rossanodan](https://www.linkedin.com/in/rossanodan/)
+* Website: https://dev.to/rossanodan
+* Twitter: [@rossanodan](https://twitter.com/rossanodan)
+* Github: [@rossanodan](https://github.com/rossanodan)
+* LinkedIn: [@rossanodan](https://linkedin.com/in/rossanodan)
