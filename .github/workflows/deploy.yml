@@ -1,9 +1,12 @@
-name: Build and Deploy on Firebase
+name: Deploy
 
 on:
   push:
     branches:
-      - master
+      - '*'
+  pull_request:
+    branches:
+      - '*'
 
 jobs:
   deploy:
@@ -11,8 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: true  # Fetch Hugo themes
-          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+          submodules: true
+          fetch-depth: 0
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
