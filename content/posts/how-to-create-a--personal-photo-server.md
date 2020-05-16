@@ -1,6 +1,5 @@
 ---
 title: "How to create a personal photo server"
-subtitle: ""
 date: 2020-05-16
 draft: false
 categories: [ General ]
