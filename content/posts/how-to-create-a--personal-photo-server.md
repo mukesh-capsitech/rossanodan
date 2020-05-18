@@ -21,3 +21,96 @@ I don't have access to my pictures anymore when I'm not around my HDD. Showing a
 That's when the idea of the private cloud started floating in my mind.
 
 You may say buying a HDD wasn't a cost? Pay for Google Photos then! You're right but nothing is better than the satisfaction you get by something built by yourself. I really like doing this kind of things so I made my private Google Photos! It's a full private cloud service actually - documents, video, images, emails, etc - but I use it only for my pictures.
+
+## Prerequisites
+
+To setup my photo server I used a Raspberry Pi 4 (4 GB RAM) with 16 GB Micro SD and an external USB drive to use as storage.
+
+![Installing Raspbian on the Micro SD](/images/installing_raspbian.png)
+
+I also installed Docker on my Raspberry Pi: I didn't want to re-install everything in case something went wrong.
+
+Install Docker
+
+```
+curl -fsSl https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo usermod -aG docker pi
+```
+
+and then check the installation
+
+```
+docker version
+Client: Docker Engine - Community
+ Version:           19.03.8
+ API version:       1.40
+ Go version:        go1.12.17
+ Git commit:        afacb8b
+ Built:             Wed Mar 11 01:35:24 2020
+ OS/Arch:           linux/arm
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.8
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.17
+  Git commit:       afacb8b
+  Built:            Wed Mar 11 01:29:22 2020
+  OS/Arch:          linux/arm
+  Experimental:     false
+ containerd:
+  Version:          1.2.13
+  GitCommit:        7ad184331fa3e55e52b890ea95e65ba581ae3429
+ runc:
+  Version:          1.0.0-rc10
+  GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+```
+
+Install docker-compose too
+
+```
+sudo apt-get install -y libffi-dev libssl-dev
+sudo apt-get install -y python3 python3-pip
+sudo apt-get remove python-configparser
+sudo pip3 install docker-compose
+```
+
+Create a `yml` file to setup the two containers
+
+```
+version: '1'
+
+volumes:
+  nextcloud:
+  db:
+
+services:
+  db:
+    image: linuxserver/mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_PASSWORD=L3tM31n!
+      - MYSQL_DATABASE=nextclouddb
+      - MYSQL_USER=rossanodan
+
+  app:
+    image: nextcloud
+    ports:
+      - 8080:80
+    links:
+      - db
+    volumes:
+      - nextcloud:/var/www/html
+    restart: always
+```
+
+Create Docker secret to store passwords
