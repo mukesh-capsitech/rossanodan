@@ -206,4 +206,4 @@ cd data/<NEXTCLOUD_USERNAME>/files/
 ls -l
 ```
 
-Here we go, files and folders! Photos are stored into `Photos` folder.
+Here they are, files and folders! Photos are stored into `Photos` folder.
