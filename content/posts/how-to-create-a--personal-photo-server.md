@@ -24,13 +24,17 @@ You may say buying a HDD wasn't a cost? Pay for Google Photos then! You're right
 
 ## Prerequisites
 
+### Raspberry Pi and Micro SD
+
 To setup my photo server I used a Raspberry Pi 4 (4 GB RAM) with 16 GB Micro SD and an external USB drive to use as storage.
 
 ![Installing Raspbian on the Micro SD](/images/installing_raspbian.png)
 
+### Docker and Docker Compose
+
 I also installed Docker on my Raspberry Pi: I didn't want to re-install everything in case something goes wrong.
 
-Install Docker and make sure the user `pi` can use it (I don't want to use `sudo` every time)
+Once installed, I did make sure the user `pi` can use it (I don't want to use `sudo` every time)
 
 ```
 curl -fsSl https://get.docker.com -o get-docker.sh
@@ -38,7 +42,7 @@ sudo sh get-docker.sh
 sudo usermod -aG docker pi
 ```
 
-and then check the installation
+and then I checked the installation
 
 ```
 docker version
@@ -71,7 +75,7 @@ Server: Docker Engine - Community
   GitCommit:        fec3683
 ```
 
-Install Docker Compose too - thanks [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
+I installed Docker Compose too - kudos to [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl) for the help
 
 ```
 sudo apt-get install -y libffi-dev libssl-dev python3 python3-pip
@@ -79,9 +83,11 @@ sudo apt-get remove python-configparser
 sudo pip3 install docker-compose
 ```
 
-Since the architecture of the Raspberry Pi is different than the classic Ubuntu's, we need to install Docker Compose via `pip3`.
+Since the architecture of the Raspberry Pi is different than the classic Ubuntu's, I needed to install Docker Compose via `pip3`.
 
-Create a `yml` file to setup the Nextcloud service
+## Declare the infrastructure
+
+To setup Nextcloud I used a `yml` file `docker-compose.yml`
 
 ```
 version: '2'
@@ -99,4 +105,4 @@ services:
     restart: always
 ```
 
-This `yml` file contains the infrastructure I want to build. This way to build infrastructure is called **IaC**, Infrastructure as Code: you declare the services you want to run and how they have to communicate each other and Docker Compose does the job for you.
+This `yml` file contains the infrastructure I want to build. This way to build infrastructures is called **IaC**, Infrastructure as Code: you declare the services you want to run and how they have to communicate each other and Docker Compose does the job for you.
