@@ -140,7 +140,7 @@ nextcloud_app_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
 
 The difference between `docker ps` and `docker-compose ps` is that `docker ps` lists all running containers in docker engine while `docker-compose ps` lists containers related to images declared in the `docker-compose.yml` file.
 
-Open a browser and go to `http://[HOSTNAME]:8080/`.
+If you're on your Raspberry, go to `http://localhost:8080/`. If you're connected to the Raspberry Pi via SSH instead, open a browser and go to `http://[HOSTNAME]:8080/`. 
 
 > If you don't know the IP address of your Raspberry Pi, just run
 >
@@ -150,5 +150,7 @@ Open a browser and go to `http://[HOSTNAME]:8080/`.
 > ```
 >
 > So, in my case, my Raspberry's IP address is `192.168.1.162`. It shouldn't change until you disconnect the Raspberry from the Internet > or you restart the router.
+
+Here's [a good article](https://itsfoss.com/ssh-into-raspberry/) about how to connect via SSH to your Raspberry.
 
 Ta-da! Nextcloud is up and running, ready to be initialized!
