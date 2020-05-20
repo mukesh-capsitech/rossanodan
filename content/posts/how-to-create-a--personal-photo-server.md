@@ -3,6 +3,7 @@ title: "How to create a personal photo server"
 date: 2020-05-16
 draft: false
 categories: [ General ]
+tags: [ raspberrypi nextcloud docker ]
 featuredImage: ""
 featuredImagePreview: ""
 ---
