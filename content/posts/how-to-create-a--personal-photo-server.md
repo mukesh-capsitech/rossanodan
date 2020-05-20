@@ -82,6 +82,9 @@ I installed Docker Compose too - kudos to [Roahn](https://dev.to/rohansawant/ins
 sudo apt-get install -y libffi-dev libssl-dev python3 python3-pip
 sudo apt-get remove python-configparser
 sudo pip3 install docker-compose
+
+docker-compose --version
+docker-compose version 1.25.5, build unknown
 ```
 
 Since the architecture of the Raspberry Pi is different than the classic Ubuntu's, I needed to install Docker Compose via `pip3`.
@@ -107,3 +110,32 @@ services:
 ```
 
 This `yml` file contains the infrastructure I want to build. This way to build infrastructures is called **IaC**, Infrastructure as Code: you declare the services you want to run and how they have to communicate each other and Docker Compose does the job for you.
+
+## Up and running
+
+Now that the `docker-compose.yml` is ready, it's time to launch!
+
+```
+docker-compose up -d
+```
+
+The option `-d` stands for `detached mode`, containers run in background.
+
+To check if the container we declared in the `yml` file is up and running, run
+
+```
+docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+a1d31d5ee1d6        nextcloud           "/entrypoint.sh apac…"   About an hour ago   Up About a minute   0.0.0.0:8080->80/tcp   nextcloud_app_1
+```
+
+I can do something similar with Docker Compose. Within the root folder  that contains the `docker-componse.yml` file, run
+
+```
+docker-compose ps
+     Name                    Command               State          Ports
+-------------------------------------------------------------------------------
+nextcloud_app_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
+```
+
+The difference between `docker ps` and `docker-compose ps` is that `docker ps` lists all running containers in docker engine while `docker-compose ps` lists containers related to images declared in the `docker-compose.yml` file.
