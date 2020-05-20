@@ -149,4 +149,14 @@ and copy the container id. Now run
 docker exec -it <CONTAINER_ID> bash
 ```
 
-to enter the container itself, in interactive mode (`-it`).
+to enter the container itself, in interactive mode `-it` using the `bash`.
+
+What you will see is something like
+
+```
+root@a1d31d5ee1d6:/var/www/html#
+```
+
+You entered the container as `root` and it's waiting for a command. So, let's discover where the container will store my pictures. The volume path is `/var/www/html`. In this container you have Apache running, that's where `/var/www` comes from.
+
+To list all the files run `ls -l`.
