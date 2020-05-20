@@ -159,4 +159,51 @@ root@a1d31d5ee1d6:/var/www/html#
 
 You entered the container as `root` and it's waiting for a command. So, let's discover where the container will store my pictures. The volume path is `/var/www/html`. In this container you have Apache running, that's where `/var/www` comes from.
 
-To list all the files run `ls -l`.
+To list all the files run `ls -l`. To discover where Nextcloud stores my data, let's open the `config.php` file to sneak a peek.
+
+```
+more config/config.php
+<?php
+$CONFIG = array (
+  'htaccess.RewriteBase' => '/',
+  'memcache.local' => '\\OC\\Memcache\\APCu',
+  'apps_paths' =>
+  array (
+    0 =>
+    array (
+      'path' => '/var/www/html/apps',
+      'url' => '/apps',
+      'writable' => false,
+    ),
+    1 =>
+    array (
+      'path' => '/var/www/html/custom_apps',
+      'url' => '/custom_apps',
+      'writable' => true,
+    ),
+  ),
+  'instanceid' => 'ocagdfr8srkl',
+  'passwordsalt' => 'Mw2SMCooFW1CAUuyzK7TV5Uh7cbGge',
+  'secret' => 'KpK7QWHnzWs/NgdkQSATn4EogqLLrIFLXO0mu0cShbG6zJVQ',
+  'trusted_domains' =>
+  array (
+    0 => '192.168.1.162:8080',
+  ),
+  'datadirectory' => '/var/www/html/data',
+  'dbtype' => 'sqlite3',
+  'version' => '18.0.4.2',
+  'overwrite.cli.url' => 'http://192.168.1.162:8080',
+  'installed' => true,
+);
+```
+
+`datadirectory`, got it!
+
+Run
+
+```
+cd data/<NEXTCLOUD_USERNAME>/files/
+ls -l
+```
+
+Here we go, files and folders! Photos are stored into `Photos` folder.
