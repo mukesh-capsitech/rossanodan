@@ -81,7 +81,7 @@ sudo pip3 install docker-compose
 
 Since the architecture of the Raspberry Pi is different than the classic Ubuntu's, we need to install Docker Compose via `pip3`.
 
-Create a `yml` file to setup the two containers
+Create a `yml` file to setup the Nextcloud service
 
 ```
 version: '2'
@@ -99,4 +99,4 @@ services:
     restart: always
 ```
 
-This `yml` file contains the infrastructure I want to build. This way to build infrastructure is called **IaC**, Infrastructure as Code. It's quite common because it's easy: you write the services you want to run and how they have to communicate and Docker Compose does the job for you.
+This `yml` file contains the infrastructure I want to build. This way to build infrastructure is called **IaC**, Infrastructure as Code: you declare the services you want to run and how they have to communicate each other and Docker Compose does the job for you.
