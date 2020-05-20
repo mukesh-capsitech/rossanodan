@@ -140,7 +140,7 @@ nextcloud_app_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
 
 The difference between `docker ps` and `docker-compose ps` is that `docker ps` lists all running containers in docker engine while `docker-compose ps` lists containers related to images declared in the `docker-compose.yml` file.
 
-Open a browser and navigate to http://[HOSTNAME]:8080/.
+Open a browser and go to http://[HOSTNAME]:8080/.
 
 > If you don't know the IP address of your Raspberry Pi, just run
 >
