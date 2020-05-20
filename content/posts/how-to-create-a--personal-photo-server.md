@@ -33,7 +33,7 @@ To setup my photo server I used a Raspberry Pi 4 (4 GB RAM) with 16 GB Micro SD 
 
 ### Docker and Docker Compose
 
-I also installed Docker on my Raspberry Pi: I didn't want to re-install everything in case something goes wrong.
+I also installed [Docker](https://www.docker.com/) on my Raspberry Pi: I didn't want to re-install everything in case something goes wrong.
 
 Once installed, I did make sure the user `pi` can use it (I don't want to use `sudo` every time)
 
@@ -46,37 +46,11 @@ sudo usermod -aG docker pi
 and then I checked the installation
 
 ```
-docker version
-Client: Docker Engine - Community
- Version:           19.03.8
- API version:       1.40
- Go version:        go1.12.17
- Git commit:        afacb8b
- Built:             Wed Mar 11 01:35:24 2020
- OS/Arch:           linux/arm
- Experimental:      false
-
-Server: Docker Engine - Community
- Engine:
-  Version:          19.03.8
-  API version:      1.40 (minimum version 1.12)
-  Go version:       go1.12.17
-  Git commit:       afacb8b
-  Built:            Wed Mar 11 01:29:22 2020
-  OS/Arch:          linux/arm
-  Experimental:     false
- containerd:
-  Version:          1.2.13
-  GitCommit:        7ad184331fa3e55e52b890ea95e65ba581ae3429
- runc:
-  Version:          1.0.0-rc10
-  GitCommit:        dc9208a3303feef5b3839f4323d9beb36df0a9dd
- docker-init:
-  Version:          0.18.0
-  GitCommit:        fec3683
+docker --version
+Docker version 19.03.8, build afacb8b
 ```
 
-I installed Docker Compose too - kudos to [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl) for the help
+I installed [Docker Compose](https://docs.docker.com/compose/) too - kudos to [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl) for the help
 
 ```
 sudo apt-get install -y libffi-dev libssl-dev python3 python3-pip
@@ -151,6 +125,6 @@ If you're on your Raspberry, go to `http://localhost:8080/`. If you're connected
 >
 > So, in my case, my Raspberry's IP address is `192.168.1.162`. It shouldn't change until you disconnect the Raspberry from the Internet > or you restart the router.
 
-Here's [a good article](https://itsfoss.com/ssh-into-raspberry/) about how to connect via SSH to your Raspberry.
+Here's [a good article](https://itsfoss.com/ssh-into-raspberry/) about how to connect via SSH to your Raspberry Pi.
 
 Ta-da! Nextcloud is up and running, ready to be initialized!
