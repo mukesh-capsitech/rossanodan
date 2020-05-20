@@ -28,7 +28,7 @@ To setup my photo server I used a Raspberry Pi 4 (4 GB RAM) with 16 GB Micro SD 
 
 ![Installing Raspbian on the Micro SD](/images/installing_raspbian.png)
 
-I also installed Docker on my Raspberry Pi: I didn't want to re-install everything in case something went wrong.
+I also installed Docker on my Raspberry Pi: I didn't want to re-install everything in case something goes wrong.
 
 Install Docker
 
@@ -71,14 +71,15 @@ Server: Docker Engine - Community
   GitCommit:        fec3683
 ```
 
-Install docker-compose too
+Install docker-compose too - thanks [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
 
 ```
-sudo apt-get install -y libffi-dev libssl-dev
-sudo apt-get install -y python3 python3-pip
+sudo apt-get install -y libffi-dev libssl-dev python3 python3-pip
 sudo apt-get remove python-configparser
 sudo pip3 install docker-compose
 ```
+
+Since the architecture of the Raspberry Pi is different than the classic Ubuntu's, we need to install Docker Compose via `pip3`.
 
 Create a `yml` file to setup the two containers
 
