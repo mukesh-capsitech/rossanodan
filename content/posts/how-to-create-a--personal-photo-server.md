@@ -30,7 +30,7 @@ To setup my photo server I used a Raspberry Pi 4 (4 GB RAM) with 16 GB Micro SD 
 
 I also installed Docker on my Raspberry Pi: I didn't want to re-install everything in case something goes wrong.
 
-Install Docker
+Install Docker and make sure the user `pi` can use it (I don't want to use `sudo` every time)
 
 ```
 curl -fsSl https://get.docker.com -o get-docker.sh
@@ -71,7 +71,7 @@ Server: Docker Engine - Community
   GitCommit:        fec3683
 ```
 
-Install docker-compose too - thanks [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
+Install Docker Compose too - thanks [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl)
 
 ```
 sudo apt-get install -y libffi-dev libssl-dev python3 python3-pip
@@ -84,34 +84,19 @@ Since the architecture of the Raspberry Pi is different than the classic Ubuntu'
 Create a `yml` file to setup the two containers
 
 ```
-version: '1'
+version: '2'
 
 volumes:
   nextcloud:
-  db:
 
 services:
-  db:
-    image: linuxserver/mariadb
-    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
-    restart: always
-    volumes:
-      - db:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_PASSWORD=L3tM31n!
-      - MYSQL_DATABASE=nextclouddb
-      - MYSQL_USER=rossanodan
-
   app:
     image: nextcloud
     ports:
       - 8080:80
-    links:
-      - db
     volumes:
       - nextcloud:/var/www/html
     restart: always
 ```
 
-Create Docker secret to store passwords
+This `yml` file contains the infrastructure I want to build. This way to build infrastructure is called **IaC**, Infrastructure as Code. It's quite common because it's easy: you write the services you want to run and how they have to communicate and Docker Compose does the job for you.
