@@ -65,7 +65,7 @@ Since the architecture of the Raspberry Pi is different than the classic Ubuntu'
 
 ## Declare the infrastructure
 
-To setup Nextcloud I used a `yml` file `docker-compose.yml`
+To setup [Nextcloud](https://nextcloud.com/) I used a `yml` file `docker-compose.yml`
 
 ```
 version: '2'
@@ -84,6 +84,8 @@ services:
 ```
 
 This `yml` file contains the infrastructure I want to build. This way to build infrastructures is called **IaC**, Infrastructure as Code: you declare the services you want to run and how they have to communicate each other and Docker Compose does the job for you.
+
+In this case, I declared I want to use the `nextcloud` image to run an app on the port `8080` (or `80` if the `8080` is busy). I also specified the path for the `volume` - where the container stores data (my photos).
 
 ## Up and running
 
