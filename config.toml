@@ -173,7 +173,7 @@ enableEmoji = true
     Kickstarter = ""
     Patreon = ""
     Steam = ""
-    Twitch = "rossanodan"
+    Twitch = ""
     Strava = ""
     Skype = ""
     Whatsapp = ""
@@ -243,7 +243,7 @@ enableEmoji = true
       # whether to show the copy button of the code block
       copy = true
       # the maximum number of lines of displayed code by default
-      maxShownLines = 10
+      maxShownLines = 50
     #  Mapbox GL JS config
     [params.page.mapbox]
       # access token of Mapbox GL JS
@@ -570,14 +570,6 @@ enableEmoji = true
     title = ""
     weight = 2
   [[menu.main]]
-    identifier = "about"
-    pre = ""
-    post = ""
-    name = "About"
-    url = "/about/"
-    title = ""
-    weight = 4
-  [[menu.main]]
     identifier = "categories"
     pre = ""
     post = ""
@@ -585,3 +577,19 @@ enableEmoji = true
     url = "/categories/"
     title = ""
     weight = 3
+  [[menu.main]]
+    identifier = "tags"
+    pre = ""
+    post = ""
+    name = "Tags"
+    url = "/tags/"
+    title = ""
+    weight = 4
+  [[menu.main]]
+    identifier = "about"
+    pre = ""
+    post = ""
+    name = "About"
+    url = "/about/"
+    title = ""
+    weight = 5

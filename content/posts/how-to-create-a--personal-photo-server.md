@@ -1,11 +1,11 @@
 ---
-title: "How to create a personal photo server"
-date: 2020-05-16
+title: "How I turned my Raspberry Pi into a private cloud server"
+date: 2020-05-20
 draft: false
 categories: [ General ]
-tags: [ raspberrypi nextcloud docker ]
-featuredImage: ""
-featuredImagePreview: ""
+tags: [ raspberrypi, docker, nextcloud ]
+featuredImage: "/images/raspberry-pi-4.jpg"
+featuredImagePreview: "/images/raspberry-pi-4.jpg"
 ---
 
 I do like travelling and taking pictures, even if most of them are really pointless :smile:
@@ -31,7 +31,7 @@ To setup my photo server I used a Raspberry Pi 4 (4 GB RAM) with 16 GB Micro SD 
 
 ![Installing Raspbian on the Micro SD](/images/installing_raspbian.png)
 
-### Docker and Docker Compose
+### Docker and Docker Compose :whale:
 
 I also installed [Docker](https://www.docker.com/) on my Raspberry Pi: I didn't want to re-install everything in case something goes wrong.
 
@@ -43,27 +43,17 @@ sudo sh get-docker.sh
 sudo usermod -aG docker pi
 ```
 
-and then I checked the installation
-
-```
-docker --version
-Docker version 19.03.8, build afacb8b
-```
-
 I installed [Docker Compose](https://docs.docker.com/compose/) too - kudos to [Roahn](https://dev.to/rohansawant/installing-docker-and-docker-compose-on-the-raspberry-pi-in-5-simple-steps-3mgl) for the help
 
 ```
 sudo apt-get install -y libffi-dev libssl-dev python3 python3-pip
 sudo apt-get remove python-configparser
 sudo pip3 install docker-compose
-
-docker-compose --version
-docker-compose version 1.25.5, build unknown
 ```
 
 Since the architecture of the Raspberry Pi is different than the classic Ubuntu's, I needed to install Docker Compose via `pip3`.
 
-## Declare the infrastructure
+## The infrastructure
 
 To setup [Nextcloud](https://nextcloud.com/) I used a `yml` file `docker-compose.yml`
 
@@ -89,7 +79,7 @@ In this case, I declared I want to use the [`nextcloud` image](https://hub.docke
 
 ## Up and running
 
-Now that the `docker-compose.yml` is ready, it's time to launch!
+Now that the `docker-compose.yml` is ready, it's time to launch :rocket:
 
 ```
 docker-compose up -d
@@ -101,6 +91,7 @@ To check if the container we declared in the `yml` file is up and running, run
 
 ```
 docker ps
+
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
 a1d31d5ee1d6        nextcloud           "/entrypoint.sh apac…"   About an hour ago   Up About a minute   0.0.0.0:8080->80/tcp   nextcloud_app_1
 ```
@@ -109,6 +100,7 @@ I can do something similar with Docker Compose. Within the root folder  that con
 
 ```
 docker-compose ps
+
      Name                    Command               State          Ports
 -------------------------------------------------------------------------------
 nextcloud_app_1   /entrypoint.sh apache2-for ...   Up      0.0.0.0:8080->80/tcp
@@ -122,6 +114,7 @@ If you're on your Raspberry, go to `http://localhost:8080/`. If you're connected
 >
 > ```
 > hostname -I
+>
 > 192.168.1.162 172.17.0.1 172.29.0.1 169.254.70.85 172.21.0.1 169.254.52.242 2a00:23c7:8e8b:1201:f35:95a7:4c14:6ed
 > ```
 >
@@ -129,16 +122,19 @@ If you're on your Raspberry, go to `http://localhost:8080/`. If you're connected
 
 Here's [a good article](https://itsfoss.com/ssh-into-raspberry/) about how to connect via SSH to your Raspberry Pi.
 
-Ta-da! Nextcloud is up and running, ready to be initialized!
+Ta-da! Nextcloud is up and running, ready to use! :tada: :tada: :tada:
+
+Setup the administrator account and do not change the storage and database settings. It's not time for that yet.
 
 ## Let's take a closer look
 
 Sweet, Nextcloud is working and is reachable only within my WiFi connection. I can upload photos from my smartphone too!
 
-Let's take a look at the container. Run
+Let's take a look at the container now. Run
 
 ```
 docker ps
+
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
 a1d31d5ee1d6        nextcloud           "/entrypoint.sh apac…"   2 hours ago         Up 37 minutes       0.0.0.0:8080->80/tcp   nextcloud_app_1
 ```
@@ -163,6 +159,7 @@ To list all the files run `ls -l`. To discover where Nextcloud stores my data, l
 
 ```
 more config/config.php
+
 <?php
 $CONFIG = array (
   'htaccess.RewriteBase' => '/',
@@ -207,3 +204,16 @@ ls -l
 ```
 
 Here they are, files and folders! Photos are stored into `Photos` folder.
+
+![Nextcloud Photos](./images/Demo_Photos.gif)
+
+## What's next
+
+My private cloud is ready and now I can safely store my HD pictures on it! Sky is the limit!
+
+Not yet :no_entry_sign: I do have two limits:
+
+1. I can't upload my photos if I'm not a home
+2. I can't upload all the photos I want because of the limited storage capacity of the Micro SD
+
+To overcome these problems are enouhg a domain and an external hard disk :soon:
