@@ -130,3 +130,23 @@ If you're on your Raspberry, go to `http://localhost:8080/`. If you're connected
 Here's [a good article](https://itsfoss.com/ssh-into-raspberry/) about how to connect via SSH to your Raspberry Pi.
 
 Ta-da! Nextcloud is up and running, ready to be initialized!
+
+## Let's take a closer look
+
+Sweet, Nextcloud is working and is reachable only within my WiFi connection. I can upload photos from my smartphone too!
+
+Let's take a look at the container. Run
+
+```
+docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                  NAMES
+a1d31d5ee1d6        nextcloud           "/entrypoint.sh apac…"   2 hours ago         Up 37 minutes       0.0.0.0:8080->80/tcp   nextcloud_app_1
+```
+
+and copy the container id. Now run
+
+```
+docker exec -it <CONTAINER_ID> bash
+```
+
+to enter the container itself, in interactive mode (`-it`).
