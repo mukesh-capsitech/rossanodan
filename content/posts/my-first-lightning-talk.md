@@ -8,7 +8,7 @@ featuredImage: ""
 featuredImagePreview: ""
 ---
 
-I had my first lightning talk on Friday 15th May 2020! :sunglasses:
+I had my first lightning talk on Friday 15th May 2020, hosted by [London Java Community](https://londonjavacommunity.co.uk/)! :sunglasses:
 
 Check it out on [YouTube](https://www.youtube.com/watch?v=H9z2u3NoJsU&feature=youtu.be&t=2247).
 
