@@ -392,10 +392,10 @@ enableEmoji = true
 
   #  Analytics config
   [params.analytics]
-    enable = false
+    enable = true
     # Google Analytics
     [params.analytics.google]
-      id = ""
+      id = "1:451326637416:web:591067ef3c5a01248712dd"
       # whether to anonymize IP
       anonymizeIP = true
       # whether to use cookie
