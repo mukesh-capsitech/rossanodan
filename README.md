@@ -1,4 +1,6 @@
-Hello :wave:! My name is Rossano D'Angelo, I come from Italy :it: and I live in London, United Kingdom :uk:.
+Hello :wave:
+
+My name is Rossano D'Angelo, I come from Italy :it: and I live in London, United Kingdom :uk:.
 
 I always hated the "describe yourself in few words". I have no idea about how to describe myself in a sentence. Maybe is a list of what I like that could define who I am?
 
