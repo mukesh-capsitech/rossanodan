@@ -2,9 +2,9 @@
 title: "About"
 ---
 
-My name is Rossano D'Angelo, I come from Italy :it: and I live in London, United Kingdom :uk:.
+Hello :wave:
 
-I always hated the "describe yourself in few words". I have no idea about how to describe myself in a sentence. Maybe is a list of what I like that could define who I am?
+My name is Rossano D'Angelo, I come from Italy :it: and I live in London, United Kingdom :uk:.
 
 I like travelling :earth_americas:, reading manga :books: - after a brief but instense phase in which I was crazy for Stephen King novels. I still do like them but my attention drives me to something else at the moment.
 
