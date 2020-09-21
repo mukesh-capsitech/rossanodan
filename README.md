@@ -1,3 +1,5 @@
+## Who I am
+
 Hello :wave:
 
 My name is Rossano D'Angelo, I come from Italy :it: and I live in London, United Kingdom :uk:.
@@ -8,4 +10,13 @@ I like coding :computer: I prefer the front-end development but lately I started
 
 And finally, yes, I do have a Netflix :tv: account too. Who doesn't like watching TV series?! I started a campaing called "re-watch them!": I'm re-watching all the TV shows I liked but I watched in Italian. I lost too much because of the translation. Darn it.
 
+## Some tech insight
+
+[![Rossano's github stats](https://github-readme-stats.vercel.app/api?username=rossanodan&show_icons=true&count_private=true)](https://github.com/rossanodan)
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/rossanodan)
+
+*Thanks to [acarrillo3](https://github.com/acarrillo3) for the realisation of these amazing widgets!*
+
+## Keep in touch
 Follow me on [Twitter](https://twitter.com/rossanodan) and [LinkedIn](https://www.linkedin.com/in/rossanodan/).
